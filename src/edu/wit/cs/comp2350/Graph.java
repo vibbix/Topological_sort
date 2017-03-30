@@ -30,19 +30,6 @@ public class Graph {
 		return nodes.toArray(new Node[nodes.size()]);
 	}
 
-	public Node[] getNodesFrom(Node n){
-		return Arrays.stream(this.GetNodes()).filter(nn -> IntStream.of(nn.GetEdges()).boxed().collect(Collectors.toList()).contains(n.GetID())).collect(Collectors.toCollection(ArrayList::new)).toArray(new Node[]{});
-	}
-
-	public Graph getReverseGraph(){
-		Graph reverse = new Graph();
-		for (Node n: this.GetNodes())
-			reverse.AddNode(n);
-		for (Node n: this.GetNodes())
-			for (int ep : n.GetEdges())
-				reverse.AddEdge(ep, n.GetID());
-		return reverse;
-	}
 	
 	public Node[] GetEdges(Node n) {
 		int[] edgeInds = n.GetEdges();

@@ -36,7 +36,7 @@ public class LAB8 {
 			throw new IllegalArgumentException("Graph is cyclical. Topological sort cannot be completed");
 		}
 		av.add(n);
-		for (Node nn : g.getNodesFrom(n)) DFS(nn, g, nodeorder, av, hcs);
+		for (Node nn : getNodesFrom(g, n)) DFS(nn, g, nodeorder, av, hcs);
 		nodeorder.add(n);
 		hcs.add(n);
 	}
@@ -161,6 +161,10 @@ public class LAB8 {
 		}
 		
 		return g;
+	}
+
+	private static Node[] getNodesFrom(Graph g, Node n){
+		return Arrays.stream(g.GetNodes()).filter(nn -> IntStream.of(nn.GetEdges()).boxed().collect(Collectors.toList()).contains(n.GetID())).collect(Collectors.toCollection(ArrayList::new)).toArray(new Node[]{});
 	}
 
 }
