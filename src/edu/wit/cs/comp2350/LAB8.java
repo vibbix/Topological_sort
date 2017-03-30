@@ -2,7 +2,9 @@ package edu.wit.cs.comp2350;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 /**
@@ -12,14 +14,33 @@ import java.util.Scanner;
 
 // Provides a solution to the topological sorting problem
 public class LAB8 {
-	
-	// TODO: document this method
+
+	//😆😡<- emoji comments now supported in IntelliJ!
+	/**
+	 * Topographically sorts a
+	 * @param g graph to search through
+	 * @return the sorted array of nodes
+	 */
 	public static Node[] FindTopo(Graph g) {
-		// TODO: implement this method
-		return null;
+		ArrayList<Node> nodes = new ArrayList<>();
+		HashSet<Node> alreadyVisited = new HashSet<>();
+		HashSet<Node> hasCompletedSearch = new HashSet<>();
+		for (Node n: g.GetNodes())
+			DFS(n, g, nodes, alreadyVisited, hasCompletedSearch);
+		return nodes.toArray(new Node[]{});
 	}
-	
-	
+
+	private static void DFS(Node n, Graph g, List<Node> nodeorder, HashSet<Node> av, HashSet<Node> hcs){
+		if (av.contains(n)){
+			if(hcs.contains(n)) return;
+			throw new IllegalArgumentException("Graph is cyclical. Topological sort cannot be completed");
+		}
+		av.add(n);
+		for (Node nn : g.getNodesFrom(n)) DFS(nn, g, nodeorder, av, hcs);
+		nodeorder.add(n);
+		hcs.add(n);
+	}
+
 	/************************************************************
 	 * A naive implementation of topological sort. This implementation
 	 * uses the 'marker' field of a node to maintain a count of the number
