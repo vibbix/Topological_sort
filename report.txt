@@ -1,0 +1,15 @@
+Score: 100
+
+it look like eclipse also supports emoji!
+
+== junit ==
+edu.wit.cs.comp2350.grading.LAB8Grading#testTiny: +25
+edu.wit.cs.comp2350.grading.LAB8Grading#testSmall: +20
+edu.wit.cs.comp2350.grading.LAB8Grading#testRandSmall: +20
+edu.wit.cs.comp2350.grading.LAB8Grading#testRandLarge: +15
+edu.wit.cs.comp2350.grading.LAB8Grading#testNoEdges: +5
+edu.wit.cs.comp2350.grading.LAB8Grading#testNoVerts: +5
+edu.wit.cs.comp2350.grading.LAB8Grading#testSorted: +10
+
+== ontime ==
+ontime: +0
